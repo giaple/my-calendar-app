@@ -4,7 +4,7 @@ import axios from "axios";
 import "react-calendar/dist/Calendar.css";
 import "./App.css"; // ⬅ custom styles
 
-const API_URL = "http://localhost:4000";
+const API_URL = "https://my-calendar-backend-ckk6.onrender.com";
 
 type EventsMap = Record<string, string>;
 
