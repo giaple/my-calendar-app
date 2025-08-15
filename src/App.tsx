@@ -14,7 +14,9 @@ export default function App() {
   const [events, setEvents] = useState<EventsMap>({});
 
   useEffect(() => {
-    axios.get<EventsMap>(`${API_URL}/events`).then((res) => setEvents(res.data));
+    axios
+      .get<EventsMap>(`${API_URL}/events`)
+      .then((res) => setEvents(res.data));
   }, []);
 
   const handleSave = async () => {
@@ -28,7 +30,7 @@ export default function App() {
   return (
     <div className="app-container">
       <div className="calendar-wrapper">
-        <h1>📅 Shared Calendar</h1>
+        <h1>📅 KIG</h1>
 
         <Calendar
           value={date}
@@ -45,14 +47,22 @@ export default function App() {
         />
 
         <div className="input-section">
-          <h3>Selected date: {date.toDateString()}</h3>
+          <h3>
+            Ngày đã chọn:{" "}
+            {date.toLocaleDateString("vi-VN", {
+              weekday: "long", // Thứ
+              year: "numeric", // Năm
+              month: "long", // Tháng
+              day: "numeric", // Ngày
+            })}
+          </h3>
           <input
             type="text"
-            placeholder="Enter name"
+            placeholder="Nhập Tên"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
-          <button onClick={handleSave}>Save</button>
+          <button onClick={handleSave}>Lưu</button>
         </div>
       </div>
     </div>
